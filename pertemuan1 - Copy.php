@@ -132,7 +132,7 @@ class laptop {
 
     
 class HpSamsung extends handphone {
-    public $memorieksternal, $ram, $perangkatlunak;
+    public $memorieksternal, $ram;
     
     public function __construct($merk, $model, $harga, $warna, $ukuranlayar, $memorieksternal, $ram){
     
@@ -142,9 +142,6 @@ class HpSamsung extends handphone {
         $this->ram = $ram;
     }
     
-    public function getperangkatlunak(){
-        return " Perangkat lunak android 11 ";
-    }
     
     public function  getdatahandphone(){
         $hp = " Handphone Samsung : " . parent::getdatahandphone() ."  {$this->memorieksternal} GB  {$this->ram} ram.";
@@ -174,19 +171,18 @@ class HpIphone extends handphone {
 
 class LaptopAsus extends laptop {
     
-    public $windows;
+    public $ram;
     
-    public function __construct($merk, $model, $harga, $warna, $berat){
+    public function __construct($merk, $model, $harga, $warna, $berat, $ram){
     
     parent::__construct($merk, $model, $harga, $warna, $berat);
+
+    $this->ram = $ram;
     }
     
-    public function getwindows() {
-        return " Sistem OS Windows 10 "
-    }
     
     public function getdatalaptop(){
-        $lp = "Laptop Asus : " . parent::getdatalaptop() .;
+        $lp = "Laptop Asus : " . parent::getdatalaptop() ."  {$this->ram}GB. ";
         return $lp;
     }
     
@@ -194,37 +190,35 @@ class LaptopAsus extends laptop {
 
 
 class Laptoplenovo extends laptop {
+    public $dayatahanbaterai;
     public function __construct($merk, $model, $harga, $warna, $berat){
     
     parent::__construct($merk, $model, $harga, $warna, $berat);
+
+    $this->dayatahanbaterai = $dayatahanbaterai;
     }
     
     public function getdatalaptop(){
-        $lp = "Laptop Asus : " . parent::getdatalaptop() .;
+        $lp = "Laptop Asus : " . parent::getdatalaptop() ."  {$this->dayatahanbaterai} Jam. ";
         return $lp;
     }
     
 }
 
 
-$hp1 = new HpSamsung("Samsung", "A52", "4.999.000", "hitam", "6,5 inci" );
-$hp2 = new HpIphone("Iphone", "12 pro max", "15.000.000", "rose gold", "6,7 inci");
+$samsung = new handphone("Samsung", "A52", "4.999.000", "hitam", "6,5 inci" );
+$iphone = new handphone("Iphone", "12 pro max", "15.000.000", "rose gold", "6,7 inci");
 
 
-$lp1 = new LaptopAsus("Asus", "Vivobook 14 A412FA","6.490.000", "hitam","1,5 kg");
-$lp2 = new Laptoplenovo("Lenovo", "IdeaPad slim 3", "6.000.000", "silver", "1,6 kg");
+$lp1 = new laptop("Asus", "Vivobook 14 A412FA","6.490.000", "hitam","1,5 kg");
+$lp2 = new laptop("Lenovo", "IdeaPad slim 3", "6.000.000", "silver", "1,6 kg");
 
 
-echo $hp1->getdatahandphone();
+echo $samsung->getdatahandphone();
 echo "<br>";
-echo $hp1->getperangkatlunak();
-echo "<br>";
-echo $hp2->getdatahandphone();
+echo $iphone->getdatahandphone();
 echo "<br>";
 echo $lp1->getdatalaptop();
-echo "<br>";
-
-echo $lp1->getwindows();
 echo "<br>";
 echo $lp2->getdatalaptop();
 
